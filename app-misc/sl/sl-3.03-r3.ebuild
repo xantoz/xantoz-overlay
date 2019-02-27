@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -9,11 +9,7 @@ SL_PATCH="sl5-1.patch"
 
 DESCRIPTION="sophisticated graphical program which corrects your miss typing"
 HOMEPAGE="http://www.tkl.iis.u-tokyo.ac.jp/~toyoda/index_e.html http://www.izumix.org.uk/sl/"
-SRC_URI="http://www.tkl.iis.u-tokyo.ac.jp/~toyoda/sl/${PN}.tar
-	!vanilla? (
-		http://www.linet.gr.jp/~izumi/sl/${SL_PATCH}
-		http://www.sodan.ecc.u-tokyo.ac.jp/~okayama/sl/${PN}.en.1.gz
-	)"
+SRC_URI="http://www.tkl.iis.u-tokyo.ac.jp/~toyoda/sl/${PN}.tar"
 
 LICENSE="freedist"
 SLOT="0"
@@ -34,9 +30,7 @@ pkg_setup() {
 
 src_prepare() {
 	if ! use vanilla ; then
-		epatch -p1 "${DISTDIR}/${SL_PATCH}"
-		epatch "${FILESDIR}/${P}-gentoo.diff"
-		epatch "${FILESDIR}/fix_compilation.patch"
+		epatch -p1 "${FILESDIR}/${SL_PATCH}"
 	fi
 
 	cp "${FILESDIR}"/Makefile "${S}" || die
@@ -55,7 +49,7 @@ src_install() {
 	dodoc sl.txt
 
 	if ! use vanilla ; then
-		newman "${WORKDIR}/sl.en.1" sl.1
+		newman "${FILESDIR}/sl.en.1" sl.1
 	fi
 
 	if use linguas_ja ; then
