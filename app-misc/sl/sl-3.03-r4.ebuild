@@ -31,6 +31,7 @@ pkg_setup() {
 src_prepare() {
 	if ! use vanilla ; then
 		epatch -p1 "${FILESDIR}/${SL_PATCH}"
+		epatch "${FILESDIR}/fix-missing-include.patch"
 	fi
 
 	cp "${FILESDIR}"/Makefile "${S}" || die
