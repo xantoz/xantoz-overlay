@@ -37,7 +37,11 @@ src_prepare() {
 	cp "${FILESDIR}"/Makefile "${S}" || die
 
 	if use linguas_ja; then
-		iconv -f ISO-2022-JP -t EUC-JP sl.1 > sl.ja.1
+		for i in README*; do
+			iconv -f ISO-2022-JP -t UTF-8 "${i}" > "${i}.converted"
+			mv "${i}.converted" "${i}"
+		done
+		iconv -f ISO-2022-JP -t UTF-8 sl.1 > sl.ja.1
 	fi
 }
 
