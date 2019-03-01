@@ -28,9 +28,9 @@
 default_numcolors=16	     # Genuine vt340's had a 16-color palette.
 
 # Maximum image size is terminal dependent, so we have to guess.
-geometry="-geometry 800x480>"		# this was the actual vt340 resolution
+#geometry="-geometry 800x480>"		# this was the actual vt340 resolution
 #geometry="-geometry 800x800>"		# allows for portrait orientation
-#geometry="-geometry 1000x1000>"	# maximum allowed in xterm322
+geometry="-geometry 1000x1000>"	# maximum allowed in xterm322
 
 # Should ImageMagick dither the image to make it look better?
 # (Use dither="" to disable.)
