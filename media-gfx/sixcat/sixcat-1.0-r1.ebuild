@@ -12,4 +12,5 @@ RDEPEND="virtual/imagemagick-tools
 
 src_install() {
 	dobin sixcat
+	dosym sixcat /usr/bin/sixgif
 }
