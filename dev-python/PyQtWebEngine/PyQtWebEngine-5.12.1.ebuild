@@ -25,7 +25,7 @@ QT_PV="5.12:5"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/PyQt5-5.12[network,widgets,printsupport,webchannel]
+	>=dev-python/PyQt5-5.12.1[network,widgets,printsupport,webchannel]
 	>=dev-qt/qtwebengine-${QT_PV}[widgets]
 "
 DEPEND="${RDEPEND}"
