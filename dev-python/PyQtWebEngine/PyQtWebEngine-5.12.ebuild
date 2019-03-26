@@ -10,7 +10,7 @@ DESCRIPTION="Python bindings for QtWebEngine"
 HOMEPAGE="https://www.riverbankcomputing.com/software/pyqtwebengine/intro"
 
 MY_P=${PN}_gpl-${PV/_pre/.dev}
-SRC_URI="https://www.riverbankcomputing.com/static/Downloads/PyQtWebEngine/${MY_P}.tar.gz"
+SRC_URI="https://www.riverbankcomputing.com/static/Downloads/PyQtWebEngine/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
