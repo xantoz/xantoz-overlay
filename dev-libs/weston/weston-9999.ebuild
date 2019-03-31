@@ -4,7 +4,7 @@
 EAPI=6
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/wayland/weston.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/wayland/weston.git"
 	GIT_ECLASS="git-r3"
 	EXPERIMENTAL="true"
 fi
