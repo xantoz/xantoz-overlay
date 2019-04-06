@@ -15,14 +15,19 @@ KEYWORDS="amd64 arm x86"
 
 RDEPEND="virtual/pam
 systemd? ( sys-apps/systemd )
+elogind? ( sys-auth/elogind )
 "
 DEPEND="${RDEPEND}"
 
-IUSE="systemd"
+REQUIRED_USE="?? ( elogind systemd )"
+
+IUSE="elogind systemd"
 
 src_prepare() {
 	default
 	tc-export CC
+	sed -i -e '/^lib_systemd_1/a lib_systemd_2 = -lelogind' Makefile
+	eapply_user
 }
 
 src_compile() {
@@ -30,6 +35,13 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX=/usr HAVE_SYSTEMD=$(use systemd 1 0) install
+	if $(use systemd); then
+		local have_systemd=1
+	elif $(use elogind); then
+		local have_systemd=2
+	else
+		local have_systemd=0
+	fi
+	emake DESTDIR="${D}" PREFIX=/usr HAVE_SYSTEMD=${have_systemd} install
 	dosym login /etc/pam.d/${PN}
 }
