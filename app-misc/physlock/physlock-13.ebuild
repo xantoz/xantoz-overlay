@@ -26,8 +26,12 @@ IUSE="elogind systemd"
 src_prepare() {
 	default
 	tc-export CC
-	sed -i -e '/^lib_systemd_1/a lib_systemd_2 = -lelogind' Makefile
-	eapply_user
+	sed -i \
+	    -e '/^lib_systemd_1/a lib_systemd_2 = -lelogind' \
+	    -e '/^\$(V).SILENT:/d' \
+	    -e '/^cppflags/a cppflags += -DHAVE_SYSTEMD=$(HAVE_SYSTEMD)' \
+	    Makefile
+	sed -i -e 's@^#include <systemd/sd-login.h>@#if HAVE_SYSTEMD == 2\n#include <elogind/sd-login.h>\n#else\n#include <systemd/sd-login.h>\n#endif@' session.c
 }
 
 src_compile() {
