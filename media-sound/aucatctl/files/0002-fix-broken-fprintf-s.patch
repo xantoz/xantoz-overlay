@@ -1,0 +1,30 @@
+From bdafbddc5849fa047c8cc416b0cb31d09b300b97 Mon Sep 17 00:00:00 2001
+From: Anton Kindestam <antonki@kth.se>
+Date: Sun, 7 Jul 2019 13:24:31 +0200
+Subject: [PATCH 2/2] fix broken fprintf:s
+
+---
+ aucatctl.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/aucatctl.c b/aucatctl.c
+index 02e3907..6d61adb 100644
+--- a/aucatctl.c
++++ b/aucatctl.c
+@@ -114,11 +114,11 @@ onsysex(unsigned char *buf, unsigned len)
+ 	case SYSEX_AUCAT_MIXINFO:
+ 		cn = x->u.mixinfo.chan;
+ 		if (cn >= MIDI_NCHAN) {
+-			fprintf(stderr, "%u: invalid channel\n");
++			fprintf(stderr, "%u: invalid channel\n", cn);
+ 			exit(1);
+ 		}
+ 		if (memchr(x->u.mixinfo.name, '\0', SYSEX_NAMELEN) == NULL) {
+-			fprintf(stderr, "%u: invalid channel name\n");
++			fprintf(stderr, "invalid channel name\n");
+ 			exit(1);
+ 		}
+ 		strlcpy(ctls[cn].name, x->u.mixinfo.name, SYSEX_NAMELEN);
+-- 
+2.21.0
+
