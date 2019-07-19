@@ -11,3 +11,6 @@ source /usr/portage/media-video/ffmpeg/ffmpeg-9999.ebuild
 
 SRC_URI=""
 S=${WORKDIR}/${P}/
+
+RDEPEND="${RDEPEND} media-libs/aribb24"
+EXTRA_FFMPEG_CONF="--enable-version3 --enable-libaribb24"
