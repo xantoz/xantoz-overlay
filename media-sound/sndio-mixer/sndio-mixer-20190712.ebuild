@@ -8,7 +8,7 @@ inherit git-r3 eutils toolchain-funcs user multilib-minimal
 EGIT_MIN_CLONE_TYPE="single"
 EGIT_REPO_URI="http://caoua.org/git/sndio"
 # mixer branch HEAD as of 20190709
-EGIT_COMMIT=9e13d35c304be11346f733b9573d46348082a6d0
+EGIT_COMMIT=939300b1bb3d0de6f11d991bd5c99a588c32afa0
 EGIT_BRANCH=mixer
 
 DESCRIPTION="small audio and MIDI framework part of the OpenBSD project. mixer branch"
