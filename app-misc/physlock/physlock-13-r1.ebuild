@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
 
-RDEPEND="virtual/pam
+RDEPEND="sys-libs/pam
 systemd? ( sys-apps/systemd )
 elogind? ( sys-auth/elogind )
 "
