@@ -12,11 +12,11 @@ S=${WORKDIR}/${PN}-${EGIT_COMMIT}/
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ~ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~hppa ppc x86 ~amd64-linux ~x86-linux"
 IUSE="debug emacs +history sloppy +xft +xrandr"
 
 RDEPEND="
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	history? ( sys-libs/readline:= )
 	xft? ( x11-libs/libXft )
 	xrandr? ( x11-libs/libXrandr )
