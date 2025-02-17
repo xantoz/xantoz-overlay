@@ -1,9 +1,9 @@
-EAPI=7
+EAPI=8
 
 DESCRIPTION="Shows thumbnails of images with titles directly in terminal using Sixels"
 HOMEPAGE="https://github.com/hackerb9/lsix"
 
-EGIT_COMMIT=aea76ac7778bc81afbf1ef5cf06e0e04cef9692e
+EGIT_COMMIT=1.9.1
 SRC_URI="https://github.com/hackerb9/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 S=${WORKDIR}/${PN}-${EGIT_COMMIT}/
 
