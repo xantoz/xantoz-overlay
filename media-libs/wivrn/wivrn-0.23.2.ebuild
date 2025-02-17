@@ -78,7 +78,8 @@ BDEPEND="
 	dev-util/vulkan-headers
 "
 
-patch_steamvr_check() {
+do_patches() {
+        eapply "${FILESDIR}/0001-Use-width-height-multiple-of-32-for-nvenc-probing.patch"
 	if use steamvr; then
 		eapply "${FILESDIR}/force-enable-steamvr_lh.patch"
 	fi
