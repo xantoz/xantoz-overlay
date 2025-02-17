@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit eutils toolchain-funcs flag-o-matic
+inherit toolchain-funcs flag-o-matic
 
 SL_PATCH="sl5-1.patch"
 
@@ -14,7 +14,7 @@ SRC_URI="http://www.tkl.iis.u-tokyo.ac.jp/~toyoda/sl/${PN}.tar"
 LICENSE="freedist"
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86 ~x86-fbsd ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="debug linguas_ja vanilla"
+IUSE="debug +linguas_ja vanilla"
 
 REQUIRED_USE="debug? ( !vanilla )"
 
@@ -30,9 +30,10 @@ pkg_setup() {
 
 src_prepare() {
 	if ! use vanilla ; then
-		epatch -p1 "${FILESDIR}/${SL_PATCH}"
-		epatch "${FILESDIR}/fix-missing-include.patch"
+		eapply "${FILESDIR}/${SL_PATCH}"
+		eapply "${FILESDIR}/fix-missing-include.patch"
 	fi
+        eapply_user
 
 	cp "${FILESDIR}"/Makefile "${S}" || die
 
@@ -43,6 +44,7 @@ src_prepare() {
 		done
 		iconv -f ISO-2022-JP -t UTF-8 sl.1 > sl.ja.1
 	fi
+
 }
 
 src_compile() {
