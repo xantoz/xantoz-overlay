@@ -122,11 +122,19 @@ KEYWORDS="~amd64"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-BDEPEND="app-text/scdoc"
+BDEPEND="
+	virtual/pkg-config
+	app-text/scdoc
+"
 
 # rust does not use *FLAGS from make.conf, silence portage warning
 # update with proper path to binaries this crate installs, omit leading /
 QA_FLAGS_IGNORED="usr/bin/${PN}"
+
+pkg_setup() {
+	export PKG_CONFIG_ALLOW_CROSS=1
+	rust_pkg_setup
+}
 
 src_compile() {
 	cargo_src_compile
