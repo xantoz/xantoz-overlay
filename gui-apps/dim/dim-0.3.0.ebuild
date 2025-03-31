@@ -120,7 +120,9 @@ LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions GPL-3 ISC MIT unicode Unlice
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND=""
+DEPEND="
+	x11-libs/libxkbcommon[wayland]
+"
 RDEPEND="${DEPEND}"
 BDEPEND="
 	virtual/pkg-config
