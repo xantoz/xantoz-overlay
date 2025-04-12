@@ -125,7 +125,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	virtual/pkg-config
+	dev-util/pkgconf
 	app-text/scdoc
 "
 
