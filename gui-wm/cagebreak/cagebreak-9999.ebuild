@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/libevdev
 	dev-libs/libinput
 	dev-libs/libxml2:2
-	>=gui-libs/wlroots-0.18.0:=[X?]
+	>=gui-libs/wlroots-0.19.0:=[X?]
 	media-libs/fontconfig
 	x11-libs/cairo[X?]
 	x11-libs/libxkbcommon:=[X?]
