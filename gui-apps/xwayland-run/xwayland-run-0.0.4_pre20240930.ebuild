@@ -6,7 +6,7 @@ inherit python-single-r1 meson
 DESCRIPTION="xwayland-run contains a set of small utilities revolving around running Xwayland and various Wayland compositor headless."
 HOMEPAGE="https://gitlab.freedesktop.org/ofourdan/xwayland-run"
 
-LICENSE="GPLv2"
+LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
