@@ -14,6 +14,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
 	${PYTHON_DEPS}
+	x11-base/xwayland
 	dev-libs/weston
 	gui-wm/cage
 "
