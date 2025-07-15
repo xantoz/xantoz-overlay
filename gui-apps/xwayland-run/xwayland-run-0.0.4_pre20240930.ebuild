@@ -21,6 +21,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="${PYTHON_DEPS}"
 
+KEYWORDS="~amd64 ~arm64"
+
 EGIT_COMMIT=3d0a3841226e8d48b5d48c2f69c69ff9d26006f9
 SRC_URI="
 	https://gitlab.freedesktop.org/ofourdan/${PN}/-/archive/${EGIT_COMMIT}/${PN}-${EGIT_COMMIT}.tar.bz2 -> ${P}.tar.bz2
