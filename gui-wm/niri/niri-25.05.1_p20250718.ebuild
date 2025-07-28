@@ -512,33 +512,15 @@ CRATES="
 	zvariant_utils@3.2.0
 "
 
-PIPEWIRE_RS_COMMIT="fd3d8f7861a29c2eeaa4c393402e013578bb36d9"
-SMITHAY_COMMIT="7c1fc8951060a46a175d1adae7c8da66f3cfe67e"
+declare -A GIT_CRATES=(
+	[libspa-sys]='https://gitlab.freedesktop.org/pipewire/pipewire-rs;fd3d8f7861a29c2eeaa4c393402e013578bb36d9;pipewire-rs-%commit%/libspa-sys;gitlab'
+	[libspa]='https://gitlab.freedesktop.org/pipewire/pipewire-rs;fd3d8f7861a29c2eeaa4c393402e013578bb36d9;pipewire-rs-%commit%/libspa;gitlab'
+	[pipewire-sys]='https://gitlab.freedesktop.org/pipewire/pipewire-rs;fd3d8f7861a29c2eeaa4c393402e013578bb36d9;pipewire-rs-%commit%/pipewire-sys;gitlab'
+	[pipewire]='https://gitlab.freedesktop.org/pipewire/pipewire-rs;fd3d8f7861a29c2eeaa4c393402e013578bb36d9;pipewire-rs-%commit%/pipewire;gitlab'
 
-# GIT_CRATES is borked for gitlab.freedesktop.org it seems, so we just add these things to SRC_URI manually and then add things to config.toml manually in src_unpack
-# declare -A GIT_CRATES=(
-# 	# [libspa-sys]='https://gitlab.freedesktop.org/pipewire/pipewire-rs/-/archive/%commit%/pipewire-rs-%commit%.tar.gz;fd3d8f7861a29c2eeaa4c393402e013578bb36d9;pipewire-rs-%commit%/libspa-sys'
-# 	# [libspa]='https://gitlab.freedesktop.org/pipewire/pipewire-rs/-/archive/%commit%/pipewire-rs-%commit%.tar.gz;fd3d8f7861a29c2eeaa4c393402e013578bb36d9;pipewire-rs-%commit%/libspa'
-# 	# [pipewire-sys]='https://gitlab.freedesktop.org/pipewire/pipewire-rs/-/archive/%commit%/pipewire-rs-%commit%.tar.gz;fd3d8f7861a29c2eeaa4c393402e013578bb36d9;pipewire-rs-%commit%/pipewire-sys'
-# 	# [pipewire]='https://gitlab.freedesktop.org/pipewire/pipewire-rs/-/archive/%commit%/pipewire-rs-%commit%.tar.gz;fd3d8f7861a29c2eeaa4c393402e013578bb36d9;pipewire-rs-%commit%/pipewire'
-
-# 	# [pipewire]='https://gitlab.freedesktop.org/pipewire/pipewire-rs/-/archive/%commit%/pipewire-rs-%commit%.tar.gz;fd3d8f7861a29c2eeaa4c393402e013578bb36d9;pipewire-rs-%commit%'
-
-# 	# [pipewire]="https://gitlab.freedesktop.org/pipewire/pipewire-rs/-/archive/${PIPEWIRE_RS_COMMIT}/pipewire-rs-${PIPEWIRE_RS_COMMIT}.tar.gz;${PIPEWIRE_RS_COMMIT};pipewire-rs-${PIPEWIRE_RS_COMMIT}"
-
-# 	# [libspa-sys]="https://gitlab.freedesktop.org/pipewire/pipewire-rs/-/archive/${PIPEWIRE_RS_COMMIT}/pipewire-rs-${PIPEWIRE_RS_COMMIT}.tar.gz;${PIPEWIRE_RS_COMMIT};pipewire-rs-${PIPEWIRE_RS_COMMIT}/libspa-sys"
-# 	# [libspa]="https://gitlab.freedesktop.org/pipewire/pipewire-rs/-/archive/${PIPEWIRE_RS_COMMIT}/pipewire-rs-${PIPEWIRE_RS_COMMIT}.tar.gz;${PIPEWIRE_RS_COMMIT};pipewire-rs-${PIPEWIRE_RS_COMMIT}/libspa"
-# 	# [pipewire-sys]="https://gitlab.freedesktop.org/pipewire/pipewire-rs/-/archive/${PIPEWIRE_RS_COMMIT}/pipewire-rs-${PIPEWIRE_RS_COMMIT}.tar.gz;${PIPEWIRE_RS_COMMIT};pipewire-rs-${PIPEWIRE_RS_COMMIT}/pipewire-sys"
-# 	# [pipewire]="https://gitlab.freedesktop.org/pipewire/pipewire-rs/-/archive/${PIPEWIRE_RS_COMMIT}/pipewire-rs-${PIPEWIRE_RS_COMMIT}.tar.gz;${PIPEWIRE_RS_COMMIT};pipewire-rs-${PIPEWIRE_RS_COMMIT}/pipewire"
-
-# 	# [libspa-sys]="https://gitlab.freedesktop.org/pipewire/pipewire-rs;${PIPEWIRE_RS_COMMIT};pipewire-rs-${PIPEWIRE_RS_COMMIT}/libspa-sys"
-# 	# [libspa]="https://gitlab.freedesktop.org/pipewire/pipewire-rs;${PIPEWIRE_RS_COMMIT};pipewire-rs-${PIPEWIRE_RS_COMMIT}/libspa"
-# 	# [pipewire-sys]="https://gitlab.freedesktop.org/pipewire/pipewire-rs;${PIPEWIRE_RS_COMMIT};pipewire-rs-${PIPEWIRE_RS_COMMIT}/pipewire-sys"
-# 	# [pipewire]="https://gitlab.freedesktop.org/pipewire/pipewire-rs;${PIPEWIRE_RS_COMMIT};pipewire-rs-${PIPEWIRE_RS_COMMIT}/pipewire"
-
-# 	[smithay-drm-extras]='https://github.com/Smithay/smithay;7c1fc8951060a46a175d1adae7c8da66f3cfe67e;smithay-%commit%/smithay-drm-extras'
-# 	[smithay]='https://github.com/Smithay/smithay;7c1fc8951060a46a175d1adae7c8da66f3cfe67e;smithay-%commit%'
-# )
+	[smithay-drm-extras]='https://github.com/Smithay/smithay;7c1fc8951060a46a175d1adae7c8da66f3cfe67e;smithay-%commit%/smithay-drm-extras'
+	[smithay]='https://github.com/Smithay/smithay;7c1fc8951060a46a175d1adae7c8da66f3cfe67e;smithay-%commit%'
+)
 
 inherit cargo llvm-r2 optfeature systemd
 
@@ -547,8 +529,6 @@ HOMEPAGE="https://github.com/YaLTeR/niri"
 
 SRC_URI="
 	https://github.com/YaLTeR/niri/archive/${MY_EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
-	https://gitlab.freedesktop.org/pipewire/pipewire-rs/-/archive/${PIPEWIRE_RS_COMMIT}/pipewire-rs-${PIPEWIRE_RS_COMMIT}.tar.gz
-	https://github.com/Smithay/smithay/archive/${SMITHAY_COMMIT}.tar.gz -> smithay-${SMITHAY_COMMIT}.tar.gz
 	${CARGO_CRATE_URIS}
 "
 S="${WORKDIR}/${PN}-${MY_EGIT_COMMIT}/"
@@ -560,7 +540,7 @@ LICENSE+="
 	Unicode-3.0
 "
 SLOT="0"
-# KEYWORDS="~amd64"
+KEYWORDS="~amd64"
 IUSE="+dbus screencast systemd"
 REQUIRED_USE="
 	screencast? ( dbus )
@@ -597,22 +577,6 @@ QA_FLAGS_IGNORED="usr/bin/niri"
 pkg_setup() {
 	llvm-r2_pkg_setup
 	rust_pkg_setup
-}
-
-src_unpack() {
-	verify-sig_src_unpack
-	cargo_src_unpack
-	echo "
-[patch.'https://gitlab.freedesktop.org/pipewire/pipewire-rs.git']
-pipewire     = { path = \"${WORKDIR}/pipewire-rs-${PIPEWIRE_RS_COMMIT}/pipewire\" }
-pipewire-sys = { path = \"${WORKDIR}/pipewire-rs-${PIPEWIRE_RS_COMMIT}/pipewire-sys\" }
-libspa       = { path = \"${WORKDIR}/pipewire-rs-${PIPEWIRE_RS_COMMIT}/libspa\" }
-libspa-sys   = { path = \"${WORKDIR}/pipewire-rs-${PIPEWIRE_RS_COMMIT}/libspa-sys\" }
-
-[patch.'https://github.com/Smithay/smithay.git']
-smithay-drm-extras = { path = \"${WORKDIR}/smithay-${SMITHAY_COMMIT}/smithay-drm-extras\" }
-smithay            = { path = \"${WORKDIR}/smithay-${SMITHAY_COMMIT}\" }
-" >> "${ECARGO_HOME}"/config.toml
 }
 
 src_prepare() {
