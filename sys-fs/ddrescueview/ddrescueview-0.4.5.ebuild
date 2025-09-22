@@ -7,12 +7,12 @@ inherit desktop xdg
 
 DESCRIPTION="Graphical viewer for GNU ddrescue mapfiles"
 HOMEPAGE="https://sourceforge.net/projects/ddrescueview/"
-SRC_URI="https://downloads.sourceforge.net/project/${PN}/${P}.tar.gz"
-
-LICENSE="GPL-2"
+SRC_URI="https://sourceforge.net/projects/ddrescueview/files/Test%20builds/v${PV}/${PN}-source-${PV}.tar.xz"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+S="${WORKDIR}/${PN}-source-${PV}"
 
 # Lazarus/FreePascal dependencies
 DEPEND="
@@ -30,7 +30,7 @@ src_install() {
 	dobin source/${PN}
 
 	# documentation
-	dodoc README* CHANGELOG* AUTHORS
+	dodoc readme.txt changelog.txt gpl.txt
 
 	# man page
 	doman resources/linux/man/man1/${PN}.1
