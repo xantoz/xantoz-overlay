@@ -11,6 +11,21 @@ SRC_URI="https://sourceforge.net/projects/ddrescueview/files/Test%20builds/v${PV
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+# TODO: qt6, gtk, gtk2 use-flags to determine how its built (and also
+# affecting dependencies.
+#
+# Like maybe lazarus needs to be built with the same flags? Although I
+# think actually for at least qt6 we actually just need
+# dev-libs/libqt6pas (however lazarus does indirectly pull this in when
+# built with qt6 use-flag)
+#
+# I also need to figure out what options to lazbuild change which
+# toolkit we build against. In manual build attempts I got different
+# results depending on whether I built graphically in the Lazarus IDE or
+# just `lazbuild` on the command line. The IDE (built with the qt6
+# USE-flag for the record) produced a qt6 ddrescueview, while building
+# on the command line produced a gtk ddrescuview. Maybe I can reference the ddrescueview build in nixpkgs?
+#
 IUSE=""
 S="${WORKDIR}/${PN}-source-${PV}"
 
