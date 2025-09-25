@@ -56,7 +56,7 @@ src_install() {
 	# icons (multiple sizes)
 	for size in 16 22 24 32 48 64 128 256; do
 		insinto /usr/share/icons/hicolor/${size}x${size}/apps
-		newins resources/linux/icons/${size}x${size}/${PN}.png ${PN}.png
+		newins resources/linux/icons/hicolor/${size}x${size}/apps/${PN}.png ${PN}.png
 	done
 }
 
