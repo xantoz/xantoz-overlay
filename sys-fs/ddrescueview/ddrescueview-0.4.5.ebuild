@@ -22,7 +22,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_compile() {
-	lazbuild source/${PN}.lpi || die "lazbuild failed"
+	lazbuild --lazarusdir=/usr/share/lazarus source/${PN}.lpi || die "lazbuild failed"
 }
 
 src_install() {
