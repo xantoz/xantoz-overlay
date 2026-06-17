@@ -1,6 +1,6 @@
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12,13} )
+PYTHON_COMPAT=( python3_{12,13,14} )
 inherit python-single-r1 meson
 
 DESCRIPTION="xwayland-run contains a set of small utilities revolving around running Xwayland and various Wayland compositor headless."
